@@ -46,7 +46,9 @@ function ProductList() {
 
   return (
     <div>
-      <Helmet><title>Product List</title></Helmet>
+      <Helmet>
+        <title>Product List</title>
+      </Helmet>
       <h1 className="my-3">Product List</h1>
       <div className="d-flex justify-content-end my-3">
         <Button
@@ -90,7 +92,7 @@ function ProductList() {
                       navigate(`/admin/editproduct/${product._id}`)
                     }
                   >
-                    Edit
+                    <i className="fa-regular fa-pen-to-square"></i>
                   </Button>
                 </td>
                 <td>
@@ -99,7 +101,7 @@ function ProductList() {
                     size="sm"
                     onClick={() => deleteProduct(product._id)}
                   >
-                    Delete
+                    <i className="fa-duotone fa-trash"></i>
                   </Button>
                 </td>
               </tr>

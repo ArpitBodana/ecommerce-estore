@@ -76,7 +76,7 @@ function UserList() {
                     size="sm"
                     onClick={() => navigate(`/admin/edituser/${user._id}`)}
                   >
-                    Edit
+                    <i className="fa-regular fa-pen-to-square"></i>
                   </Button>
                   {"  "}
                   <Button
@@ -85,7 +85,7 @@ function UserList() {
                     size="sm"
                     onClick={() => deleteUser(user._id)}
                   >
-                    Delete
+                    <i className="fa-duotone fa-trash"></i>
                   </Button>
                 </td>
               </tr>
