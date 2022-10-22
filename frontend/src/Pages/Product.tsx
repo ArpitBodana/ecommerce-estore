@@ -10,7 +10,6 @@ import {
   ListGroup,
   Badge,
 } from "react-bootstrap";
-
 import Rating from "../Components/Rating";
 import { fetchSingleRequest } from "../Redux/SingleProduct/SingleProductAction";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,8 +21,7 @@ import { AddToCart } from "../Redux";
 
 function Product() {
   const params = useParams();
-  NavigationPreloadManager();
-
+  const navigate = useNavigate() ;
   const { slug } = params;
   const dispatch = useDispatch();
   useEffect(() => {
