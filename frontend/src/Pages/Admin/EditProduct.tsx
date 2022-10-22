@@ -81,7 +81,7 @@ function EditProduct() {
     const fetchProduct = async () => {
       try {
         const { data } = await axios.get(
-          `https://estore-mern-demo.herokuapp.com/api/admin/product/${id}`,
+          `https://estore-mern-demo.herokuapp.com/api/product/${id}`,
           {
             headers: {
               authorization: `Bearer ${user.access_token}`,
