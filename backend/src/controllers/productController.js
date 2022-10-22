@@ -102,7 +102,6 @@ const productController = {
       description,
       countInStock,
       numOfReviews,
-      image,
     } = req.body;
 
     let doc;
@@ -117,7 +116,7 @@ const productController = {
           description,
           countInStock,
           numOfReviews,
-          image,
+          ...(req.body.image && { image: req.body.image }),
         },
         { new: true }
       );
