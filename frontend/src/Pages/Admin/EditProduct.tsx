@@ -33,41 +33,42 @@ function EditProduct() {
     const imgdata = new FormData();
     imgdata.append("file", newImage);
     imgdata.append("upload_preset", "estore");
+
     await axios
       .post("https://api.cloudinary.com/v1_1/dlnbatnlc/image/upload", imgdata)
       .then((res) => {
         console.log(res.data);
+        toast.success("Image Added Now submit data");
         setImageUrl(res.data.url);
         setIsImage(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error("Image not uploaded please try again!!");
+      });
   };
-
   const updateProduct = async (e: React.FormEvent) => {
     e?.preventDefault();
     try {
-      const fd = new FormData();
-
-      if (isImage) {
-        fd.append("image", newImage, newImage.name);
-      }
-      fd.append("name", name);
-      fd.append("brand", brand);
-      fd.append("price", price);
-      fd.append("description", description);
-      fd.append("category", category);
-      //@ts-ignore
-      fd.append("countInStock", countInStock);
-      //@ts-ignore
-      fd.append("rating", rating);
-      //@ts-ignore
-      fd.append("numOfReviews", numOfReviews);
-      await axios.put(`https://estore-mern-demo.herokuapp.com/api/admin/product/${id}`, fd, {
-        headers: {
-          authorization: `Bearer ${user.access_token}`,
-          "content-type": "multipart/form-data",
+      await axios.put(
+        `https://estore-mern-demo.herokuapp.com/api/admin/product/${id}`,
+        {
+          name,
+          price,
+          brand,
+          description,
+          category,
+          countInStock,
+          rating,
+          numOfReviews,
+          image: imageUrl,
         },
-      });
+        {
+          headers: {
+            authorization: `Bearer ${user.access_token}`,
+          },
+        }
+      );
       window.location.reload();
       toast.success("Updated Successfully");
     } catch (error: any) {

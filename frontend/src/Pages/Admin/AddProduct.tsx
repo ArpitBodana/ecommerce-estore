@@ -65,7 +65,7 @@ function AddProduct() {
           countInStock,
           rating,
           numOfReviews,
-          image,
+          image:imageUrl,
         },
         {
           headers: {
