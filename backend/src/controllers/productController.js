@@ -20,7 +20,7 @@ const productController = {
       countInStock,
       numOfReviews,
       category,
-      image,
+      imageUrl,
     } = req.body;
     let document;
     try {
@@ -33,7 +33,7 @@ const productController = {
         countInStock,
         numOfReviews,
         category,
-        image,
+        imageUrl,
       });
     } catch (error) {
       console.log("save error");
