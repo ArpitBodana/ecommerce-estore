@@ -27,7 +27,7 @@ export const fetchSingleRequest = (id: string) => {
     return (dispatch: MapDispatch) => {
         //@ts-ignore
         dispatch(fetchSingleProduct())
-        axios.get(`https://estore-mern-demo.herokuapp.com/api/products/${id}`).then(res => {
+        axios.get(`https://estore-mern-demo.herokuapp.com/api/product/${id}`).then(res => {
             const singleProduct: ProductType = res.data
             //@ts-ignore
             dispatch(fetchSingleProductSuccess(singleProduct))
