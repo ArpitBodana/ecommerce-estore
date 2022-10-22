@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
@@ -55,9 +55,13 @@ function AddProduct() {
     e?.preventDefault();
     try {
       const { data } = await axios.post(
-        `https://estore-mern-demo.herokuapp.com/api/admin/product`,
+        `https://estore-mern-demo.herokuapp.com/api/admin/product`,{
+          headers: {
+            authorization: `Bearer ${user.access_token}`,
+          },
+        },
         {
-          name: name,
+          name
           price,
           brand,
           description,
@@ -66,16 +70,10 @@ function AddProduct() {
           rating,
           numOfReviews,
           image: imageUrl,
-        },
-        {
-          headers: {
-            authorization: `Bearer ${user.access_token}`,
-            "content-type": "multipart/form-data",
-          },
         }
+        
       );
       console.log("Data", data);
-
       restAllFields();
       toast.success("Producted Added");
     } catch (error: any) {
@@ -83,9 +81,6 @@ function AddProduct() {
       toast.error("Something went wrong");
     }
   };
-  useEffect(() => {
-    console.log("url", imageUrl);
-  });
   return (
     <div>
       <Helmet>
