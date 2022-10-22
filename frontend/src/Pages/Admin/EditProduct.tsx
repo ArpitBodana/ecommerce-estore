@@ -29,18 +29,23 @@ function EditProduct() {
   const [isImage, setIsImage] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
 
-  const selectImageHandler = async (e: React.BaseSyntheticEvent) => {
+  const selectImageHandler = (e: React.BaseSyntheticEvent) => {
     setNewImage(e.target.files[0]);
     const imgdata = new FormData();
     imgdata.append("file", newImage);
     imgdata.append("upload_preset", "estore");
 
-    await axios
-      .post("https://api.cloudinary.com/v1_1/dlnbatnlc/image/upload", imgdata)
-      .then((res) => {
-        console.log(res.data);
+    // await axios
+    //   .post("https://api.cloudinary.com/v1_1/dlnbatnlc/image/upload", imgdata)
+    fetch("https://api.cloudinary.com/v1_1/dlnbatnlc/image/upload", {
+      method: "POST",
+      body: imgdata,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
         toast.success("Image Added Now submit data");
-        setImageUrl(res.data.url);
+        setImageUrl(data.url);
         setIsImage(true);
       })
       .catch((err) => {
