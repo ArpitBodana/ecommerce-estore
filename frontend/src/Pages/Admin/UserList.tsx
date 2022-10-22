@@ -85,7 +85,7 @@ function UserList() {
                     size="sm"
                     onClick={() => deleteUser(user._id)}
                   >
-                    <i className="fa-duotone fa-trash"></i>
+                    <i className="fas fa-trash"></i>
                   </Button>
                 </td>
               </tr>
