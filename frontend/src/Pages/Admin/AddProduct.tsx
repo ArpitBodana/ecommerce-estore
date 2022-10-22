@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
@@ -55,13 +55,14 @@ function AddProduct() {
     e?.preventDefault();
     try {
       const { data } = await axios.post(
-        `https://estore-mern-demo.herokuapp.com/api/admin/product`,{
+        `https://estore-mern-demo.herokuapp.com/api/admin/product`,
+        {
           headers: {
             authorization: `Bearer ${user.access_token}`,
           },
         },
         {
-          name
+          name,
           price,
           brand,
           description,
@@ -71,7 +72,6 @@ function AddProduct() {
           numOfReviews,
           image: imageUrl,
         }
-        
       );
       console.log("Data", data);
       restAllFields();
