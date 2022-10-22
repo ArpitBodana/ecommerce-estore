@@ -102,7 +102,7 @@ function App() {
           <Container>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/product/:slug/" element={<Product />} />
+              <Route path="/product/:slug" element={<Product />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />

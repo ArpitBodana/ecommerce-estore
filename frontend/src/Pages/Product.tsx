@@ -22,7 +22,8 @@ import { AddToCart } from "../Redux";
 
 function Product() {
   const params = useParams();
-  const navigate = useNavigate();
+  NavigationPreloadManager();
+
   const { slug } = params;
   const dispatch = useDispatch();
   useEffect(() => {

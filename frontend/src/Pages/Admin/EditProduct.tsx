@@ -5,13 +5,14 @@ import { Button, Col, Row } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { MapState } from "../../Redux/Products/ProductType";
 import { UserStateTypes } from "../../Redux/User/UserTypes";
 
 function EditProduct() {
   const params = useParams();
+  const navigate = useNavigate();
   const { id } = params;
   const { user }: UserStateTypes = useSelector((state: MapState) => state.user);
   const [name, setName] = useState("");
@@ -69,8 +70,9 @@ function EditProduct() {
           },
         }
       );
-      window.location.reload();
+
       toast.success("Updated Successfully");
+      navigate("/admin/productlist");
     } catch (error: any) {
       toast.error(error.response.data.message);
     }
