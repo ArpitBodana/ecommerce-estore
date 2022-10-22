@@ -9,7 +9,7 @@ const productSchema=Joi.object({
     countInStock:Joi.number().required(),
     numOfReviews:Joi.number().required(),
     category:Joi.string().required(),
-
+    image:Joi.string().required(),
 })
 
 export default productSchema
