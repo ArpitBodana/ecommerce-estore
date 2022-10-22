@@ -57,11 +57,6 @@ function AddProduct() {
       const { data } = await axios.post(
         `https://estore-mern-demo.herokuapp.com/api/admin/product`,
         {
-          headers: {
-            authorization: `Bearer ${user.access_token}`,
-          },
-        },
-        {
           name,
           price,
           brand,
@@ -71,6 +66,11 @@ function AddProduct() {
           rating,
           numOfReviews,
           image: imageUrl,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${user.access_token}`,
+          },
         }
       );
       console.log("Data", data);
