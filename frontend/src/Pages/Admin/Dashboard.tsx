@@ -110,7 +110,7 @@ function Dashboard() {
                   ...products.map((x) => [x.name, x.countInStock]),
                 ]}
                 options={{ title: "Products", is3D: true }}
-                // loader={<LoadingSpinner />}
+                loader={<LoadingSpinner />}
               />
             </Col>
             <Col md={6}>
@@ -123,7 +123,7 @@ function Dashboard() {
                   ...categories.map((x: string) => [x, countCat(x)]),
                 ]}
                 options={{ title: "Categories", is3D: true }}
-                // loader={<LoadingSpinner />}
+                loader={<LoadingSpinner />}
               />
             </Col>
           </Row>
