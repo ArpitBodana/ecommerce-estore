@@ -26,7 +26,7 @@ function Profile() {
             toast.error("Password not matched!");
         }else{
             const { data } = await axios.put(
-                "https://estore-mern-demo.herokuapp.com/users/profile",
+                "https://estore-mern-demo.herokuapp.com/api/users/profile",
                 {
                   name,
                   email,
