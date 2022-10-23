@@ -17,16 +17,16 @@ import { Form } from "react-bootstrap";
 
 const prices = [
   {
-    name: "Rs 0 - Rs 100",
-    value: "1-100",
+    name: "Rs 50 - Rs 150",
+    value: "50-150",
   },
   {
-    name: "Rs 100 - Rs 200",
-    value: "100-200",
+    name: "Rs 150 - Rs 500",
+    value: "150-500",
   },
   {
-    name: "Rs 200 - Rs 1500",
-    value: "200-1500",
+    name: "Rs 500 - Rs 2000",
+    value: "500-1000",
   },
 ];
 
