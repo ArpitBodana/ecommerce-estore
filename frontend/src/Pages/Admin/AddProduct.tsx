@@ -43,8 +43,6 @@ function AddProduct() {
       await axios
         .post("https://api.cloudinary.com/v1_1/dlnbatnlc/image/upload", imgdata)
         .then((res) => {
-          console.log(res.data);
-          toast.success("Image Added Now submit data");
           setImageUrl(res.data.url);
           axios.post(
             `https://estore-mern-demo.herokuapp.com/api/admin/product`,

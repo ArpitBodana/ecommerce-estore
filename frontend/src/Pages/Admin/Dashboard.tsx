@@ -38,6 +38,10 @@ function Dashboard() {
     ["Products", "CountInStock"],
     ...products.map((x) => [x.name, x.countInStock]),
   ];
+  const charData2=[
+    ["Category", "CountInStock"],
+    ...categories.map((x: string) => [x, countCat(x)]),
+  ]
   useEffect(() => {
     //@ts-ignore
     dispatch(getAdminData(user.access_token));
@@ -110,18 +114,15 @@ function Dashboard() {
                 height="400px"
                 chartType="PieChart"
                 data={chartData}
-                options={{ title: "Products", is3D: true }}
+                options={{ title: "Products",}}
                 loader={<LoadingSpinner />}
               />
             </Col>
             <Col md={6}>
               <Chart
                 chartType="PieChart"
-                data={[
-                  ["Category", "CountInStock"],
-                  ...categories.map((x: string) => [x, countCat(x)]),
-                ]}
-                options={{ title: "Categories", is3D: true }}
+                data={charData2}
+                options={{ title: "Categories",}}
                 loader={<LoadingSpinner />}
                 width="100%"
                 height="400px"
