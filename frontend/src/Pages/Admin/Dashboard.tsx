@@ -36,7 +36,7 @@ function Dashboard() {
   };
   const chartData = [
     ["Products", "CountInStock"],
-    ...products.map((x) => [x.name, x.countInStock]),
+    ...products.map((x: any) => [x.name, x.countInStock]),
   ];
   const chartData2 = [
     ["Category", "CountInStock"],
@@ -57,7 +57,7 @@ function Dashboard() {
     };
     fetchCategories();
     console.log(chartData, chartData2);
-  }, [dispatch, user.access_token]);
+  }, [dispatch, user.access_token, chartData, chartData2]);
   return (
     <div>
       <Helmet>
