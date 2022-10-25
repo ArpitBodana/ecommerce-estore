@@ -32,9 +32,7 @@ function AddProduct() {
     setReviews(0);
     setIsImage(false);
   };
-  const selectImageHandler = async (e: React.BaseSyntheticEvent) => {
-    setNewImage(e.target.files[0]);
-  };
+
   const addProduct = async (e: React.FormEvent) => {
     e?.preventDefault();
     try {
@@ -165,7 +163,7 @@ function AddProduct() {
           <Form.Control
             type="file"
             required
-            onChange={(e) => selectImageHandler(e)}
+            onChange={(e) => setNewImage(e.target.files[0])}
           />
         </Form.Group>
         <div className="mb-3">
