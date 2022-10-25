@@ -51,6 +51,7 @@ function EditProduct() {
   const updateProduct = async (e: React.FormEvent) => {
     e?.preventDefault();
     try {
+      const img = imageUrl ? imageUrl : imageLink;
       await axios.put(
         `https://estore-mern-demo.herokuapp.com/api/admin/product/${id}`,
         {
@@ -62,7 +63,7 @@ function EditProduct() {
           countInStock,
           rating,
           numOfReviews,
-          image: imageUrl,
+          image: img,
         },
         {
           headers: {
