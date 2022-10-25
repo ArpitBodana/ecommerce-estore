@@ -18,7 +18,6 @@ function AddProduct() {
   const [rating, setRating] = useState(0);
   const [newImage, setNewImage] = useState<any>();
   const [numOfReviews, setReviews] = useState(0);
-  const [isImage, setIsImage] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
 
   const restAllFields = () => {
@@ -30,7 +29,6 @@ function AddProduct() {
     setDescription("");
     setRating(0);
     setReviews(0);
-    setIsImage(false);
   };
   const selectImageHandler = (e: React.BaseSyntheticEvent) => {
     setNewImage(e.target.files[0]);
@@ -48,43 +46,39 @@ function AddProduct() {
           console.log(res.data);
           toast.success("Image Added Now submit data");
           setImageUrl(res.data.url);
-          console.log(imageUrl);
-          setIsImage(true);
+          const { data } = await axios.post(
+            `https://estore-mern-demo.herokuapp.com/api/admin/product`,
+            {
+              name,
+              price,
+              brand,
+              description,
+              category,
+              countInStock,
+              rating,
+              numOfReviews,
+              image: res.data.url,
+            },
+            {
+              headers: {
+                authorization: `Bearer ${user.access_token}`,
+              },
+            }
+          );
+          console.log("Data", data);
+          restAllFields();
+          toast.success("Producted Added");
         })
         .catch((err) => {
           console.log(err);
           toast.error("Image not uploaded please try again!!");
         });
-      const { data } = await axios.post(
-        `https://estore-mern-demo.herokuapp.com/api/admin/product`,
-        {
-          name,
-          price,
-          brand,
-          description,
-          category,
-          countInStock,
-          rating,
-          numOfReviews,
-          image: imageUrl,
-        },
-        {
-          headers: {
-            authorization: `Bearer ${user.access_token}`,
-          },
-        }
-      );
-      console.log("Data", data);
-      restAllFields();
-      toast.success("Producted Added");
     } catch (error: any) {
       console.log(error);
       toast.error("Something went wrong");
     }
   };
-  useEffect(() => {
-    console.log(imageUrl);
-  });
+
   return (
     <div>
       <Helmet>

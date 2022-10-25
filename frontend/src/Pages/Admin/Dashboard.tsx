@@ -34,6 +34,10 @@ function Dashboard() {
     }
     return counter;
   };
+  const chartData = [
+    ["Products", "CountInStock"],
+    ...products.map((x) => [x.name, x.countInStock]),
+  ];
   useEffect(() => {
     //@ts-ignore
     dispatch(getAdminData(user.access_token));
@@ -105,10 +109,7 @@ function Dashboard() {
                 width="100%"
                 height="400px"
                 chartType="PieChart"
-                data={[
-                  ["Products", "CountInStock"],
-                  ...products.map((x) => [x.name, x.countInStock]),
-                ]}
+                data={chartData}
                 options={{ title: "Products", is3D: true }}
                 loader={<LoadingSpinner />}
               />
