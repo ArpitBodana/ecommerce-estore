@@ -38,10 +38,10 @@ function Dashboard() {
     ["Products", "CountInStock"],
     ...products.map((x) => [x.name, x.countInStock]),
   ];
-  const charData2=[
+  const chartData2 = [
     ["Category", "CountInStock"],
     ...categories.map((x: string) => [x, countCat(x)]),
-  ]
+  ];
   useEffect(() => {
     //@ts-ignore
     dispatch(getAdminData(user.access_token));
@@ -56,6 +56,7 @@ function Dashboard() {
       }
     };
     fetchCategories();
+    console.log(chartData, chartData2);
   }, [dispatch, user.access_token]);
   return (
     <div>
@@ -110,19 +111,19 @@ function Dashboard() {
           <Row>
             <Col md={6}>
               <Chart
-                width="100%"
-                height="400px"
                 chartType="PieChart"
                 data={chartData}
-                options={{ title: "Products",}}
+                options={{ title: "Products" }}
                 loader={<LoadingSpinner />}
+                width="100%"
+                height="400px"
               />
             </Col>
             <Col md={6}>
               <Chart
                 chartType="PieChart"
-                data={charData2}
-                options={{ title: "Categories",}}
+                data={chartData2}
+                options={{ title: "Categories" }}
                 loader={<LoadingSpinner />}
                 width="100%"
                 height="400px"
