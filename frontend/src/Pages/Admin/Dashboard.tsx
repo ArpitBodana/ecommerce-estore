@@ -34,14 +34,7 @@ function Dashboard() {
     }
     return counter;
   };
-  const chartData = [
-    ["Products", "CountInStock"],
-    ...products.map((x: any) => [x.name, x.countInStock]),
-  ];
-  const chartData2 = [
-    ["Category", "CountInStock"],
-    ...categories.map((x: string) => [x, countCat(x)]),
-  ];
+
   useEffect(() => {
     //@ts-ignore
     dispatch(getAdminData(user.access_token));
@@ -56,8 +49,7 @@ function Dashboard() {
       }
     };
     fetchCategories();
-    console.log(chartData, chartData2);
-  }, [dispatch, user.access_token, chartData, chartData2]);
+  }, [dispatch, user.access_token]);
   return (
     <div>
       <Helmet>
@@ -112,7 +104,10 @@ function Dashboard() {
             <Col md={6}>
               <Chart
                 chartType="PieChart"
-                data={chartData}
+                data={[
+                  ["Products", "CountInStock"],
+                  ...products.map((x) => [x.name, x.countInStock]),
+                ]}
                 options={{ title: "Products" }}
                 loader={<LoadingSpinner />}
                 width="100%"
@@ -122,7 +117,10 @@ function Dashboard() {
             <Col md={6}>
               <Chart
                 chartType="PieChart"
-                data={chartData2}
+                data={[
+                  ["Category", "CountInStock"],
+                  ...categories.map((x: string) => [x, countCat(x)]),
+                ]}
                 options={{ title: "Categories" }}
                 loader={<LoadingSpinner />}
                 width="100%"
