@@ -46,7 +46,7 @@ function AddProduct() {
           console.log(res.data);
           toast.success("Image Added Now submit data");
           setImageUrl(res.data.url);
-          const { data } = await axios.post(
+          axios.post(
             `https://estore-mern-demo.herokuapp.com/api/admin/product`,
             {
               name,
@@ -65,7 +65,6 @@ function AddProduct() {
               },
             }
           );
-          console.log("Data", data);
           restAllFields();
           toast.success("Producted Added");
         })
