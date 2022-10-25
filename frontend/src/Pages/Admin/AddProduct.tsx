@@ -96,6 +96,7 @@ function AddProduct() {
           <Form.Label>Description</Form.Label>
           <Form.Control
             type="text"
+            as="textarea"
             required
             value={description}
             onChange={(e) => setDescription(e.target.value)}
