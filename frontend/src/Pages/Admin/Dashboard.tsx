@@ -24,7 +24,7 @@ function Dashboard() {
 
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
-  const allCat = [...products.map((x) => x.category)];
+  const allCat = [...products.map((x: any) => x.category)];
   const countCat = (cat: any) => {
     let counter = 0;
     for (let i of allCat) {
@@ -104,9 +104,13 @@ function Dashboard() {
             <Col md={6}>
               <Chart
                 chartType="PieChart"
+                // data={[
+                //   ["Products", "CountInStock"],
+                //   ...products.map((x: any) => [x.name, x.countInStock]),
+                // ]}
                 data={[
                   ["Products", "CountInStock"],
-                  ...products.map((x) => [x.name, x.countInStock]),
+                  [4, 5],
                 ]}
                 options={{ title: "Products" }}
                 loader={<LoadingSpinner />}
@@ -117,9 +121,13 @@ function Dashboard() {
             <Col md={6}>
               <Chart
                 chartType="PieChart"
+                // data={[
+                //   ["Category", "CountInStock"],
+                //   ...categories.map((x: string) => [x, countCat(x)]),
+                // ]}
                 data={[
                   ["Category", "CountInStock"],
-                  ...categories.map((x: string) => [x, countCat(x)]),
+                  [5, 9],
                 ]}
                 options={{ title: "Categories" }}
                 loader={<LoadingSpinner />}
