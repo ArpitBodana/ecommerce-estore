@@ -34,26 +34,26 @@ function AddProduct() {
   };
   const selectImageHandler = async (e: React.BaseSyntheticEvent) => {
     setNewImage(e.target.files[0]);
-    const imgdata = new FormData();
-    imgdata.append("file", newImage);
-    imgdata.append("upload_preset", "estore");
-
-    await axios
-      .post("https://api.cloudinary.com/v1_1/dlnbatnlc/image/upload", imgdata)
-      .then((res) => {
-        console.log(res.data);
-        toast.success("Image Added Now submit data");
-        setImageUrl(res.data.url);
-        setIsImage(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Image not uploaded please try again!!");
-      });
   };
   const addProduct = async (e: React.FormEvent) => {
     e?.preventDefault();
     try {
+      const imgdata = new FormData();
+      imgdata.append("file", newImage);
+      imgdata.append("upload_preset", "estore");
+
+      await axios
+        .post("https://api.cloudinary.com/v1_1/dlnbatnlc/image/upload", imgdata)
+        .then((res) => {
+          console.log(res.data);
+          toast.success("Image Added Now submit data");
+          setImageUrl(res.data.url);
+          setIsImage(true);
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Image not uploaded please try again!!");
+        });
       const { data } = await axios.post(
         `https://estore-mern-demo.herokuapp.com/api/admin/product`,
         {
