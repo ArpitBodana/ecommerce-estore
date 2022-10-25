@@ -113,7 +113,6 @@ function Dashboard() {
                   [4, 5],
                 ]}
                 options={{ title: "Products" }}
-                loader={<LoadingSpinner />}
                 width="100%"
                 height="400px"
               />
@@ -130,7 +129,6 @@ function Dashboard() {
                   [5, 9],
                 ]}
                 options={{ title: "Categories" }}
-                loader={<LoadingSpinner />}
                 width="100%"
                 height="400px"
               />
