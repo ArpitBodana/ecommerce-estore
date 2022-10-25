@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
@@ -81,6 +81,9 @@ function AddProduct() {
       toast.error("Something went wrong");
     }
   };
+  useEffect(() => {
+    console.log(imageUrl);
+  }, [imageUrl]);
   return (
     <div>
       <Helmet>
