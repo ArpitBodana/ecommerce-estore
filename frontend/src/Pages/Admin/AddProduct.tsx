@@ -48,6 +48,8 @@ function AddProduct() {
           console.log(res.data);
           toast.success("Image Added Now submit data");
           setImageUrl(res.data.url);
+          console.log(imageUrl);
+
           setIsImage(true);
         })
         .catch((err) => {

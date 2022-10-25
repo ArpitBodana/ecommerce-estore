@@ -115,8 +115,6 @@ function Dashboard() {
             </Col>
             <Col md={6}>
               <Chart
-                width="100%"
-                height="400px"
                 chartType="PieChart"
                 data={[
                   ["Category", "CountInStock"],
@@ -124,6 +122,8 @@ function Dashboard() {
                 ]}
                 options={{ title: "Categories", is3D: true }}
                 loader={<LoadingSpinner />}
+                width="100%"
+                height="400px"
               />
             </Col>
           </Row>
