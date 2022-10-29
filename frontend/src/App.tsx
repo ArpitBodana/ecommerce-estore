@@ -15,27 +15,6 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import AdminRoute from "./Components/AdminRoute";
 import LoadingSpinner from "./Components/LoadingSpinner";
 
-// import Search from "./Pages/Search";
-// import Dashboard from "./Pages/Admin/Dashboard";
-// import UserList from "./Pages/Admin/UserList";
-// import EditUser from "./Pages/Admin/EditUser";
-// import OrderList from "./Pages/Admin/OrderList";
-// import ProductList from "./Pages/Admin/ProductList";
-// import EditProduct from "./Pages/Admin/EditProduct";
-// import AddProduct from "./Pages/Admin/AddProduct";
-// import Order from "./Pages/Order";
-// import OrderHistory from "./Pages/OrderHistory";
-// import Profile from "./Pages/Profile";
-// import Shipping from "./Pages/Shipping";
-// import SignUp from "./Pages/SignUp";
-// import PaymentMethod from "./Pages/PaymentMethod";
-// import PlaceOrder from "./Pages/PlaceOrder";
-// import Cart from "./Pages/Cart";
-// import SignIn from "./Pages/SignIn";
-// import PageNotFound from "./Pages/PageNotFound";
-// import Product from "./Pages/Product";
-// import Home from "./Pages/Home";
-
 const Search = lazy(() => import("./Pages/Search"));
 const Dashboard = lazy(() => import("./Pages/Admin/Dashboard"));
 const UserList = lazy(() => import("./Pages/Admin/UserList"));
