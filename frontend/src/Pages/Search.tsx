@@ -26,7 +26,7 @@ const prices = [
   },
   {
     name: "Rs 500 - Rs 2000",
-    value: "500-1000",
+    value: "500-2000",
   },
 ];
 
