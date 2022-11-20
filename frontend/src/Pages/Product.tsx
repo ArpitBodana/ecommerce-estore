@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-  Image,
   Row,
   Col,
   Container,
@@ -18,10 +17,11 @@ import Error from "../Components/Error";
 import LoadingSpinner from "../Components/LoadingSpinner";
 import { Helmet } from "react-helmet-async";
 import { AddToCart } from "../Redux";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Product() {
   const params = useParams();
-  const navigate = useNavigate() ;
+  const navigate = useNavigate();
   const { slug } = params;
   const dispatch = useDispatch();
   useEffect(() => {
@@ -50,11 +50,10 @@ function Product() {
           <Container className="">
             <Row>
               <Col className="large-image" md={5}>
-                <Image
+                <LazyLoadImage
                   alt={singleProductData.products.name}
-                  fluid
                   src={singleProductData.products.image}
-                  className=""
+                  className="img-main"
                 />
               </Col>
               <Col md={3}>
