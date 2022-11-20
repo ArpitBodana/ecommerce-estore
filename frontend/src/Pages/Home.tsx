@@ -16,9 +16,6 @@ function Home({ fetchProducts, productData }: HomeType) {
     fetchProducts();
   }, [fetchProducts]);
 
-  
-
-
   return (
     <div>
       <Helmet>

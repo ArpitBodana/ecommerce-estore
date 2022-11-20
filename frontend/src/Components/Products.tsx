@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "../Redux";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 function Products({ products }: ProductComponentType) {
   const navigate = useNavigate();
@@ -29,7 +31,17 @@ function Products({ products }: ProductComponentType) {
                 <Col className="mb-2" key={pro._id} lg={3} sm={6} md={6}>
                   <Card className="p-2 ">
                     <Link to={`/product/${pro._id}`}>
-                      <Image className="" alt={pro.name} fluid src={pro.image} />
+                      {/* <Image
+                        className=""
+                        alt={pro.name}
+                        fluid
+                        src={pro.image}
+                      /> */}
+                      <LazyLoadImage
+                        alt={pro.name}
+                        effect="blur"
+                        src={pro.image}
+                      />
                     </Link>
                     <Card.Body>
                       <Link
@@ -43,14 +55,19 @@ function Products({ products }: ProductComponentType) {
                         numOfReviews={pro.numOfReviews}
                       />
                       <Card.Text>Rs {pro.price}</Card.Text>
-                      {pro.countInStock===0?<Button disabled variant="light">Out of Stock</Button>:<Button
-                        className="border border-dark"
-                        variant="warning"
-                        onClick={() => addToCart(pro)}
-                      >
-                        Add To Cart
-                      </Button>}
-                      
+                      {pro.countInStock === 0 ? (
+                        <Button disabled variant="light">
+                          Out of Stock
+                        </Button>
+                      ) : (
+                        <Button
+                          className="border border-dark"
+                          variant="warning"
+                          onClick={() => addToCart(pro)}
+                        >
+                          Add To Cart
+                        </Button>
+                      )}
                     </Card.Body>
                   </Card>
                 </Col>
