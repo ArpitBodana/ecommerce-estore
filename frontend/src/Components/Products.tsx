@@ -41,6 +41,7 @@ function Products({ products }: ProductComponentType) {
                         alt={pro.name}
                         effect="blur"
                         src={pro.image}
+                        className="img-main"
                       />
                     </Link>
                     <Card.Body>
